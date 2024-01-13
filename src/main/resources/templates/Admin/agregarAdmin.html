@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{main.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+
+<div layout:fragment="content">
+
+
+    <div class="card col-md-6  col-sm-12 offset-md-3 offset-sm-3" style="width: 60%;">
+        <div class="card-body text-center d-flex d-flex justify-content-center vh-100">
+            <div class="row">
+                <div class="col-lg-12 align-self-center">
+                    <div th:if=${param.exito}>
+                        <div class="alert alert-info">
+                            Se ha registrado existosamente a la aplicación
+                        </div></div>
+
+                    <h1>Registro Admin</h1>
+
+                    <div>
+                    <form th:action="@{/usuarios/guardarAdmin}" method="post" th:object="${admin}">
+                        <div class="form-group">
+                            <label class="control-label" for="nombre">Nombre: </label>
+                            <input id="nombre" type="text" class="form-control" th:field="*{nombre}"
+                                   required autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="apellidoPaterno">Apellido: </label>
+                            <input id="apellidoPaterno" type="text" class="form-control"
+                                   th:field="*{apellido}" required autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="email">Email: </label>
+                            <input id="email" type="email" class="form-control"
+                                   th:field="*{email}" required autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password">Password: </label>
+                            <input id="password" type="password" class="form-control"
+                                   th:field="*{password}" required autofocus="autofocus">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="estado">Estado: </label>
+                            <input id="estado" type="text" class="form-control" th:value="1"
+                                   th:field="*{enabled}"
+                                   required autofocus="autofocus" disabled>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
